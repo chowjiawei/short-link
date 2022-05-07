@@ -75,7 +75,7 @@ class ShortLinkService
     public function short($outOldUrl, $newUrlType, $length = 6)
     {
         $this->validateOldUrl($outOldUrl);
-        if(!in_array($newUrlType,['mix','number','minLetter','maxLetter'])){
+        if (!in_array($newUrlType, ['mix','number','minLetter','maxLetter'])) {
             throw new \Exception('类型错误', "422");
         }
         $parseUrl=parse_url($outOldUrl);
@@ -152,7 +152,7 @@ class ShortLinkService
                 $result .= $charsArray[mt_rand(0, $charsLen)];
             }
             $count=ShortLink::query()->where('redirect_new', $result)->first();
-            if(!$count){
+            if (!$count) {
                 return $result;
             }
         }
