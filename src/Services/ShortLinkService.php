@@ -158,12 +158,13 @@ class ShortLinkService
         }
     }
 
+    //使用旧链接（长链接）删除
     public function deleteOldUrl($url)
     {
         ShortLink::query()->where('redirect_old', $url)->delete();
         return true;
     }
-
+    //使用新链接（短链接）删除 这会删除全部相关的新链接
     public function deleteNewUrl($url)
     {
         $count=ShortLink::query()->where('redirect_new', $url)->delete();

@@ -22,12 +22,12 @@ $shortLinkService->short('apple122','maxLetter');
 $shortLinkService->customShort('apple1111','apple123');
 ```
 
-- 删除关系链接（使用旧链接【长连接】进行删除）
+- 删除关系链接（使用旧链接【长连接】进行删除）  
 ```php
 $shortLinkService->deleteOldUrl('apple122');
 ```
 
-- 删除关系链接（使用新链接【短连接】进行删除）
+- 删除关系链接（使用新链接【短连接】进行删除） 这会删除全部相关的新链接
 ```php
 $shortLinkService->deleteNewUrl('apple122');
 ```
