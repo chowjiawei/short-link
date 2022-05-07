@@ -13,7 +13,7 @@ class CreateRedirectsTable extends Migration
      */
     public function up()
     {
-        Schema::create('redirects', function (Blueprint $table) {
+        Schema::create('short_links', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('redirect_old')->unique()->index();
             $table->string('redirect_new');

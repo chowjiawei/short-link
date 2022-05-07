@@ -11,8 +11,9 @@ class ShortLinkService
     public function validateForbidPrefixUrl($url): bool
     {
         $forbidPrefixUrl=config('short-link.forbid_prefix');
+
         $parseUrl=parse_url($url);
-        $string='/'.explode('/', $parseUrl['path'])[1] ;
+        $string='/'.(explode('/', $parseUrl['path'])[1]??explode('/', $parseUrl['path'])[0]) ;
         foreach ($forbidPrefixUrl as $key => $value) {
             if ($string==$value) {
                 return true;
