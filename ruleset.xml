@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<ruleset name="Custom">
+ <description>Zend, but without linelength check.</description>
+ <rule ref="Generic.Files.LineLength">
+  <properties>
+   <property name="lineLimit" value="1024"/>
+   <property name="absoluteLineLimit" value="0"/>
+  </properties>
+ </rule>
+</ruleset>

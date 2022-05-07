@@ -1,0 +1,35 @@
+{
+    "name": "chowjiawei/short-link",
+    "type": "library",
+    "description": "Tool for changing long links into short links.",
+    "keywords": ["laravel", "plugin", "link"],
+    "homepage": "https://github.com/chowjiawei/short-link",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "chowjiawei",
+            "email": "1084186870@qq.com"
+        }
+    ],
+    "require": {
+        "php": "^7.0|^8.0",
+        "laravel/framework": "^6.0|^7.0|^8.0|^9.0",
+        "squizlabs/php_codesniffer": "^3.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Chowjiawei\\ShortLink\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Chowjiawei\\ShortLink\\Providers\\ShortLinkServiceProvider"
+            ]
+        }
+    },
+    "scripts": {
+        "lint": "phpcs --standard=PSR1,PSR2,./ruleset.xml src/",
+        "lint-fix": "phpcbf --standard=PSR1,PSR2 src/"
+    }
+}
