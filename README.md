@@ -36,3 +36,15 @@ $shortLinkService->deleteNewUrl('apple122');
 $shortLinkService=new \Chowjiawei\ShortLink\Services\ShortLinkService();
 return  $shortLinkService->redirect();  
 ```
+
+### 配置修改
+
+`config`文件夹内的`short-link`配置
+
+#### 临时关闭服务跳转
+
+`enabled` 为false即可暂停
+
+### 禁用前缀
+
+`forbid_prefix` 可配置不可解析的前缀url
