@@ -17,6 +17,10 @@ $shortLinkService=new \Chowjiawei\ShortLink\Services\ShortLinkService();
 ```php
 $shortLinkService->short('apple122','maxLetter');
 ```
+- 自定义新链接（短链接）
+```php
+$shortLinkService->customShort('apple1111','apple123');
+```
 
 - 删除关系链接（使用旧链接【长连接】进行删除）
 ```php
@@ -26,4 +30,9 @@ $shortLinkService->deleteOldUrl('apple122');
 - 删除关系链接（使用新链接【短连接】进行删除）
 ```php
 $shortLinkService->deleteNewUrl('apple122');
+```
+- 使用跳转 建议放入Laravel(app\Http\Controller.php 的fallback方法内) ，路由（`Route::fallback('Controller@fallback');`）
+```php
+$shortLinkService=new \Chowjiawei\ShortLink\Services\ShortLinkService();
+return  $shortLinkService->redirect();  
 ```
