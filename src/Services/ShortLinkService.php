@@ -75,6 +75,9 @@ class ShortLinkService
     public function short($outOldUrl, $newUrlType, $length = 6)
     {
         $this->validateOldUrl($outOldUrl);
+        if(!in_array($newUrlType,['mix','number','minLetter','maxLetter'])){
+            throw new \Exception('类型错误', "422");
+        }
         $parseUrl=parse_url($outOldUrl);
         $oldUrl=isset($parseUrl['scheme']) ? $parseUrl['path']  : $outOldUrl;
 
@@ -143,10 +146,27 @@ class ShortLinkService
                 break;
         }
         $charsLen = count($charsArray) - 1;
-        $result = "";
-        for ($i=0; $i<$length; $i++) {
-            $result .= $charsArray[mt_rand(0, $charsLen)];
+        while (true) {
+            $result = "";
+            for ($i=0; $i<$length; $i++) {
+                $result .= $charsArray[mt_rand(0, $charsLen)];
+            }
+            $count=ShortLink::query()->where('redirect_new', $result)->first();
+            if(!$count){
+                return $result;
+            }
         }
-        return $result;
+    }
+
+    public function deleteOldUrl($url)
+    {
+        ShortLink::query()->where('redirect_old', $url)->delete();
+        return true;
+    }
+
+    public function deleteNewUrl($url)
+    {
+        $count=ShortLink::query()->where('redirect_new', $url)->delete();
+        return true;
     }
 }
